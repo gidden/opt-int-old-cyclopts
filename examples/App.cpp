@@ -3,7 +3,7 @@
 #include <boost/any.hpp>
 
 #include "CyclusSolverTools.h"
-#include "CyclusSolver.h"
+#include "CBCSolver.h"
 #include "CyclusSolverInterface.h"
 
 using namespace std;

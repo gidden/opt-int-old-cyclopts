@@ -2,3 +2,8 @@
 SET( CYCLOPTS_SRC ${CYCLOPTS_SRC} 
   ${CMAKE_CURRENT_SOURCE_DIR}/CyclusSolverInterface.cpp
   PARENT_SCOPE)
+
+# add include files
+SET( CYCLOPTS_INCL ${CYCLOPTS_INCL} 
+  ${CMAKE_CURRENT_SOURCE_DIR}/CyclusSolverInterface.h
+  PARENT_SCOPE)
