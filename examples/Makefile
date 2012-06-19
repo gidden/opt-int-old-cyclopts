@@ -7,17 +7,11 @@ CXX = g++
 # C++ Compiler options
 CXXFLAGS = -O3 
 
-# additional C++ Compiler options for linking
-CXXLINKFLAGS =  -Wl,--rpath -Wl,../install/lib
-
-# Directory with COIN header files
+# Directory with cyclopts header files
 INCLDIR = ../install/include
 
-# Directory with COIN libraries
-LIBDIR = ../install/lib
-
-# Libraries necessary to link with Clp
-LIBS = -L$(LIBDIR) -lcyclopts
+# Libraries necessary to link with cyclopts
+LIBS = -lcyclopts
 
 # Necessary Include dirs
 INCL =  -I$(INCLDIR)
