@@ -41,14 +41,17 @@ ADD_SUBDIRECTORY(Interface)
 ADD_SUBDIRECTORY(Solver)
 ADD_SUBDIRECTORY(Utility)
 
-# find coin and link to it
+# # find coin and link to it
 FIND_PACKAGE( COIN REQUIRED )
 SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${COIN_INCLUDE_DIRS})
+MESSAGE("Found Coin Include Dir: ${COIN_INCLUDE_DIRS}")
 set(LIBS ${LIBS} ${COIN_LIBRARIES})
+MESSAGE("Found Coin Libraries: ${COIN_LIBRARIES}")
 
 # include all the directories we just found
 INCLUDE_DIRECTORIES( ${CYCLOPTS_INCLUDE_DIR} )
 
 # Build the cyclopts executable from the CYCLOPTS_SRC source files
-ADD_EXECUTABLE( cyclopts ${CYCLOPTS_SRC} )
+#ADD_EXECUTABLE( cyclopts ${CYCLOPTS_SRC} )
+ADD_LIBRARY( cyclopts ${CYCLOPTS_SRC} )
 TARGET_LINK_LIBRARIES( cyclopts dl ${LIBS} )

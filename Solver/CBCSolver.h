@@ -8,6 +8,9 @@
 #include "CoinModel.hpp"
 #include "CbcModel.hpp"
 
+/// an epsilon value to define strict inequalities
+#define CONSTRAINT_EPS 1e-08
+
 namespace CyclusOptimization {
   /// the coin branch-and-cut solver
   class CBCSolver : public CyclusSolver {

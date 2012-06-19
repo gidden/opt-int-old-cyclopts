@@ -8,8 +8,6 @@
 using namespace std;
 using namespace CyclusOptimization;
 
-#define CONSTRAINT_EPS 1e-08
-
 // -----------------------------------------------------------------------------------
 CyclusSolver::CyclusSolver() {
   index_ = map<VariablePtr,int>();

@@ -1,9 +1,10 @@
 # modeled after FindCOIN.cmake in the lemon project
 
-SET(COIN_ROOT_DIR "" CACHE PATH "COIN root directory")
+#SET(COIN_ROOT_DIR "" CACHE PATH "COIN root directory")
+set(COIN_ROOT_DIR $ENV{COIN_ROOT_DIR})
 
-FIND_PATH(COIN_INCLUDE_DIR coin/CoinUtilsConfig.h
-  HINTS ${COIN_ROOT_DIR}/include
+FIND_PATH(COIN_INCLUDE_DIR CoinUtilsConfig.h
+  HINTS ${COIN_ROOT_DIR}/include/coin
 )
 FIND_LIBRARY(COIN_CBC_LIBRARY
   NAMES Cbc libCbc
