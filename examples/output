@@ -1,0 +1,14 @@
+min 2x + 3y
+s.t. 1x + 2y >= 5
+Variables:
+  lbound: 0 ubound: 2.14748e+09 integer: 1
+  lbound: 0 ubound: 2.14748e+09 integer: 1
+note true = 1
+Objective Function:
+  direction: 1
+    values: 2 3 
+Constraints:
+  lbound: 5 ubound: 1.79769e+308
+    values: 1 2 
+value of x: 1
+value of y: 2
