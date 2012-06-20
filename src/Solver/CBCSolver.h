@@ -11,6 +11,9 @@
 /// an epsilon value to define strict inequalities
 #define CONSTRAINT_EPS 1e-08
 
+/// typedef cbc model to abstract away coin's library
+typedef CbcModel CoinCbcModel;
+
 namespace CyclusOptimization {
   /// the coin branch-and-cut solver
   class CBCSolver : public CyclusSolver {
@@ -34,9 +37,9 @@ namespace CyclusOptimization {
     /// set the objective direction
     double objDirection(ObjFuncPtr& obj);
     /// solve the model
-    void solveModel(CbcModel& model);
+    void solveModel(CoinCbcModel& model);
     /// populate the solution in the variable vector
-    void populateSolution(CbcModel& model,std::vector<VariablePtr>& variables);
+    void populateSolution(CoinCbcModel& model,std::vector<VariablePtr>& variables);
     /// print variables info
     void printVariables(int n_const);
     /// print objective function info
