@@ -7,9 +7,10 @@ Build & Install
 ---------------
 
 To install cyclopts, one must first install:
-   * blas: http://www.netlib.org/blas/
-   * lapack: http://www.netlib.org/lapack/
-   * coin-Cbc: https://projects.coin-or.org/Cbc.
+   * coin-Cbc: https://projects.coin-or.org/Cbc, which relies on
+   * blas(dev): http://www.netlib.org/blas/
+   * lapack(dev): http://www.netlib.org/lapack/
+   * bz2(dev): http://www.bzip.org/downloads.html
 
 Additionally, one must:
    * set an environment variable COIN_ROOT_DIR (this should point to the directory in which the bin, include, and lib folders for coin-Cbc reside)
