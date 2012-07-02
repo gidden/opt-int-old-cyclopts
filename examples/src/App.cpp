@@ -8,7 +8,7 @@
 
 using namespace std;
 using boost::any_cast;
-using namespace CyclusOptimization;
+using namespace Cyclopts;
 
 int main() {
 

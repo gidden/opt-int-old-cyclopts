@@ -6,7 +6,7 @@
 #include <vector>
 
 using namespace std;
-using namespace CyclusOptimization;
+using namespace Cyclopts;
 
 // -----------------------------------------------------------------------------------
 CyclusSolver::CyclusSolver() {

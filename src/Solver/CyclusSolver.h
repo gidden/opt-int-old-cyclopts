@@ -5,7 +5,7 @@
 #include <map>
 #include <boost/shared_ptr.hpp>
 
-namespace CyclusOptimization{
+namespace Cyclopts{
   class CyclusSolver;
   /// a smart pointer to the base class
   typedef boost::shared_ptr<CyclusSolver> SolverPtr;
@@ -13,7 +13,7 @@ namespace CyclusOptimization{
 
 #include "CyclusSolverTools.h"
 
-namespace CyclusOptimization {
+namespace Cyclopts {
   /// abstract base class for different types of constraint program solvers
   class CyclusSolver {
   public:

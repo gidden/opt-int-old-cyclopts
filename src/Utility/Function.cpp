@@ -7,7 +7,7 @@
 #include <sstream>
 
 using namespace std;
-using namespace CyclusOptimization;
+using namespace Cyclopts;
 
 // +++ Function methods ++
 // -----------------------------------------------------------------------------------

@@ -14,7 +14,7 @@
 
 using namespace std;
 using namespace boost;
-using namespace CyclusOptimization;
+using namespace Cyclopts;
 
 // -----------------------------------------------------------------------------------
 double CBCSolver::doubleBound(Variable::bound b) {

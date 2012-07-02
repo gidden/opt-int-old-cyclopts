@@ -6,7 +6,7 @@
 
 #include <vector>
 
-namespace CyclusOptimization{
+namespace Cyclopts{
   /// interface class to set up and solve a constraint program
   class CyclusSolverInterface {
   public:

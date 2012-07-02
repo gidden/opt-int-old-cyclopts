@@ -14,7 +14,7 @@
 /// typedef cbc model to abstract away coin's library
 typedef CbcModel CoinCbcModel;
 
-namespace CyclusOptimization {
+namespace Cyclopts {
   /// the coin branch-and-cut solver
   class CBCSolver : public CyclusSolver {
   public:

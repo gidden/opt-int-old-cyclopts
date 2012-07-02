@@ -4,7 +4,7 @@
 #include <vector>
 
 using namespace std;
-using namespace CyclusOptimization;
+using namespace Cyclopts;
 
 // -----------------------------------------------------------------------------------
 CyclusSolverInterface::CyclusSolverInterface(SolverPtr& s) : solver_(s) {

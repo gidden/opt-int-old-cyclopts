@@ -5,7 +5,7 @@
 
 using namespace std;
 using namespace boost;
-using namespace CyclusOptimization;
+using namespace Cyclopts;
 
 // +++ Variable methods ++
 // -----------------------------------------------------------------------------------
