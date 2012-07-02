@@ -1,5 +1,5 @@
-#include "CyclusSolverInterface.h"
-#include "CyclusSolverTools.h"
+#include "SolverInterface.h"
+#include "SolverTools.h"
 
 #include <vector>
 
@@ -7,34 +7,34 @@ using namespace std;
 using namespace Cyclopts;
 
 // -----------------------------------------------------------------------------------
-CyclusSolverInterface::CyclusSolverInterface(SolverPtr& s) : solver_(s) {
+SolverInterface::SolverInterface(SolverPtr& s) : solver_(s) {
   constraints_ = vector<ConstraintPtr>();
   variables_ = vector<VariablePtr>();
 };
 
 // -----------------------------------------------------------------------------------
-void CyclusSolverInterface::registerVariable(VariablePtr& v) {
+void SolverInterface::registerVariable(VariablePtr& v) {
   variables_.push_back(v);
 }
 
 // -----------------------------------------------------------------------------------
-void CyclusSolverInterface::registerObjFunction(ObjFuncPtr obj) {
+void SolverInterface::registerObjFunction(ObjFuncPtr obj) {
   obj_ = obj;
 }
 
 // -----------------------------------------------------------------------------------
-void CyclusSolverInterface::addVarToObjFunction(VariablePtr& v, double& modifier) {
+void SolverInterface::addVarToObjFunction(VariablePtr& v, double& modifier) {
   // need to check that v is in variables_
   obj_->addConstituent(v,modifier);
 }
 
 // -----------------------------------------------------------------------------------
-void CyclusSolverInterface::registerConstraint(ConstraintPtr& c) {
+void SolverInterface::registerConstraint(ConstraintPtr& c) {
   constraints_.push_back(c);
 }
 
 // -----------------------------------------------------------------------------------
-void CyclusSolverInterface::addVarToConstraint(VariablePtr& v, double& modifier, 
+void SolverInterface::addVarToConstraint(VariablePtr& v, double& modifier, 
                                                ConstraintPtr& c) {
   // need to check that v is in variables_ and c is in constraints_
   vector<ConstraintPtr>::iterator it;
@@ -43,6 +43,6 @@ void CyclusSolverInterface::addVarToConstraint(VariablePtr& v, double& modifier,
 }
 
 // -----------------------------------------------------------------------------------
-void CyclusSolverInterface::solve() {
+void SolverInterface::solve() {
   solver_->solve(variables_,obj_,constraints_);
 }

@@ -1,4 +1,4 @@
-#include "CyclusSolver.h"
+#include "Solver.h"
 
 #include "Variable.h"
 
@@ -9,12 +9,12 @@ using namespace std;
 using namespace Cyclopts;
 
 // -----------------------------------------------------------------------------------
-CyclusSolver::CyclusSolver() {
+Solver::Solver() {
   index_ = map<VariablePtr,int>();
 }
 
 // -----------------------------------------------------------------------------------
-void CyclusSolver::populateIndices(std::vector<VariablePtr>& variables) {
+void Solver::populateIndices(std::vector<VariablePtr>& variables) {
   for (int i = 0; i < variables.size(); i++) {
     index_[variables.at(i)] = i;
   }

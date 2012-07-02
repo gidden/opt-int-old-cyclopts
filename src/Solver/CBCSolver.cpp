@@ -179,7 +179,7 @@ void CBCSolver::print(int n_const, int n_vars) {
 void CBCSolver::solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
                       std::vector<ConstraintPtr>& constraints) {
   // use builder_ to build constraint probelm
-  CyclusSolver::populateIndices(variables);
+  Solver::populateIndices(variables);
   setUpConstraints(constraints);
   setUpVariablesAndObj(variables,obj);
   builder_.setOptimizationDirection(objDirection(obj));

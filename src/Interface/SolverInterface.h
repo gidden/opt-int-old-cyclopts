@@ -1,17 +1,17 @@
 #ifndef CYCLUSSOLVERINTERFACE_H
 #define CYCLUSSOLVERINTERFACE_H
 
-#include "CyclusSolver.h"
-#include "CyclusSolverTools.h"
+#include "Solver.h"
+#include "SolverTools.h"
 
 #include <vector>
 
 namespace Cyclopts{
   /// interface class to set up and solve a constraint program
-  class CyclusSolverInterface {
+  class SolverInterface {
   public:
     /// constructor, sets the solver to use
-    CyclusSolverInterface(SolverPtr& solver);
+    SolverInterface(SolverPtr& solver);
     /// add a constraint
     void registerVariable(VariablePtr& v);
     /// set the objective function

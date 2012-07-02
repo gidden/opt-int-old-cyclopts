@@ -2,9 +2,9 @@
 #include <vector>
 #include <boost/any.hpp>
 
-#include "CyclusSolverTools.h"
+#include "SolverTools.h"
 #include "CBCSolver.h"
-#include "CyclusSolverInterface.h"
+#include "SolverInterface.h"
 
 using namespace std;
 using boost::any_cast;
@@ -14,7 +14,7 @@ int main() {
 
   // set up solver and interface
   SolverPtr solver(new CBCSolver());
-  CyclusSolverInterface csi(solver);
+  SolverInterface csi(solver);
 
   // set up objective function
   ObjFuncPtr obj(new ObjectiveFunction(ObjectiveFunction::MIN));

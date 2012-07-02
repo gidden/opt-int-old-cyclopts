@@ -16,7 +16,7 @@ typedef CbcModel CoinCbcModel;
 
 namespace Cyclopts {
   /// the coin branch-and-cut solver
-  class CBCSolver : public CyclusSolver {
+  class CBCSolver : public Solver {
   public:
     /// solve an MIP
     virtual void solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 

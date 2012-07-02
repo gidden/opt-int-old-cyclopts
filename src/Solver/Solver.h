@@ -6,21 +6,21 @@
 #include <boost/shared_ptr.hpp>
 
 namespace Cyclopts{
-  class CyclusSolver;
+  class Solver;
   /// a smart pointer to the base class
-  typedef boost::shared_ptr<CyclusSolver> SolverPtr;
+  typedef boost::shared_ptr<Solver> SolverPtr;
 }
 
-#include "CyclusSolverTools.h"
+#include "SolverTools.h"
 
 namespace Cyclopts {
   /// abstract base class for different types of constraint program solvers
-  class CyclusSolver {
+  class Solver {
   public:
     /// constructor
-    CyclusSolver();
+    Solver();
     /// virtual destructor
-    virtual ~CyclusSolver() {};
+    virtual ~Solver() {};
     /// solve method to be overloaded by derived classes
     virtual void solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
                        std::vector<ConstraintPtr>& constraints) = 0;

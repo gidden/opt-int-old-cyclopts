@@ -16,7 +16,7 @@ namespace Cyclopts {
   typedef boost::shared_ptr<ObjectiveFunction> ObjFuncPtr;
 }
 
-#include "CyclusSolverInterface.h"
+#include "SolverInterface.h"
 
 namespace Cyclopts {
   /// function base class
@@ -42,7 +42,7 @@ namespace Cyclopts {
     /// add a constituent
     void addConstituent(VariablePtr& v, double& modifer);
     /// the solver interface builds functions knowing what variables exist
-    friend class CyclusSolverInterface;
+    friend class SolverInterface;
   };
 
   /// derived class for constraints
