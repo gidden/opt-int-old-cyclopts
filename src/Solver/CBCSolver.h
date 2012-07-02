@@ -1,8 +1,7 @@
 #ifndef CBCSOLVER_H
 #define CBCSOLVER_H
 
-#include "Variable.h"
-#include "Function.h"
+#include "SolverTools.h"
 
 // coin includes
 #include "CoinModel.hpp"

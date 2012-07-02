@@ -1,7 +1,6 @@
 #include "CBCSolver.h"
 
-#include "Function.h"
-#include "Variable.h"
+#include "SolverTools.h"
 
 #include <iostream>
 #include <utility>

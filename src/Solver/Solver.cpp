@@ -1,6 +1,6 @@
 #include "Solver.h"
 
-#include "Variable.h"
+#include "SolverTools.h"
 
 #include <map>
 #include <vector>
