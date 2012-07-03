@@ -11,6 +11,7 @@ To install cyclopts, one must first install:
    * blas(dev): http://www.netlib.org/blas/
    * lapack(dev): http://www.netlib.org/lapack/
    * zlib(dev): http://zlib.net/
+   * bz2(dev): http://www.bzip.org/downloads.html
 
 If you choose to install coin in a non-standard location, you must
 add a path to the include directory in your PATH variable.
