@@ -77,7 +77,7 @@ TARGET_LINK_LIBRARIES( cyclopts dl ${LIBS} )
 
 #install the files
 install(TARGETS cyclopts DESTINATION lib)
-install(FILES ${CYCLOPTS_INCL} DESTINATION include)
+install(FILES ${CYCLOPTS_INCL} DESTINATION include/cyclopts)
 
 # uninstall target
 configure_file(

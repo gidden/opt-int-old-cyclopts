@@ -1,10 +1,10 @@
 
-FIND_PATH(CYCLOPTS_INCLUDE_DIR Variable.h
+FIND_PATH(CYCLOPTS_INCLUDE_DIR cyclopts/Variable.h
 )
 
 FIND_LIBRARY(CYCLOPTS_LIBRARY
   NAMES cyclopts libcyclopts
-  HINTS ${CYCLOPTS_INCLUDE_DIR}/../lib
+  HINTS ${CYCLOPTS_INCLUDE_DIR}/../../lib
 )
 
 # let us know if we found it
