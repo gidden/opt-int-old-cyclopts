@@ -1,13 +1,10 @@
 
-set(CYCLOPTS_ROOT_DIR $ENV{CYCLOPTS_ROOT_DIR})
-
 FIND_PATH(CYCLOPTS_INCLUDE_DIR Variable.h
-  HINTS ${CYCLOPTS_ROOT_DIR}/include
 )
 
 FIND_LIBRARY(CYCLOPTS_LIBRARY
   NAMES cyclopts libcyclopts
-  HINTS ${CYCLOPTS_ROOT_DIR}/lib
+  HINTS ${CYCLOPTS_INCLUDE_DIR}/../lib
 )
 
 # let us know if we found it
