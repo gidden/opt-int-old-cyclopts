@@ -1,6 +1,11 @@
 
+# if installed in a non-standard location,
+# the include directory must be added to the PATH variable
 FIND_PATH(CYCLOPTS_INCLUDE_DIR cyclopts/Variable.h
 )
+
+set(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR}/cyclopts)
+#MESSAGE("\tCYCLOPTS Include Dir: ${CYCLOPTS_INCLUDE_DIR}")
 
 FIND_LIBRARY(CYCLOPTS_LIBRARY
   NAMES cyclopts libcyclopts
