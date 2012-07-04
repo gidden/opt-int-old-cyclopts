@@ -3,6 +3,14 @@
 # if installed in a non-standard location,
 # the include directory must be added to the PATH variable
 FIND_PATH(COIN_INCLUDE_DIR coin/CbcModel.hpp
+  HINTS /usr/
+  HINTS /usr/include/
+  HINTS /usr/local/
+  HINTS /usr/local/include/
+  HINTS /usr/coin/
+  HINTS /usr/coin-Cbc/
+  HINTS /usr/local/coin/
+  HINTS /usr/local/coin-Cbc/
 )
 #MESSAGE("\tCOIN Include Dir: ${COIN_INCLUDE_DIR}")
 
@@ -63,10 +71,10 @@ FIND_LIBRARY(COIN_ZLIB_LIBRARY
 )
 #MESSAGE("\tCOIN ZLIP: ${COIN_ZLIB_LIBRARY}")
 
-#FIND_LIBRARY(COIN_BZ2_LIBRARY
-#  NAMES bz2 libz2
-#  HINTS ${COIN_ROOT_DIR}/lib
-#)
+FIND_LIBRARY(COIN_BZ2_LIBRARY
+ NAMES bz2 libz2
+ HINTS ${COIN_ROOT_DIR}/lib
+)
 # #MESSAGE("\tCOIN BZ2: ${COIN_BZ2_LIBRARY}")
  
 INCLUDE(FindPackageHandleStandardArgs)
@@ -81,7 +89,7 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(COIN DEFAULT_MSG
   COIN_OSI_CBC_LIBRARY
   COIN_OSI_CLP_LIBRARY
   COIN_ZLIB_LIBRARY
-#  COIN_BZ2_LIBRARY
+  COIN_BZ2_LIBRARY
 )
 
 IF(COIN_FOUND)

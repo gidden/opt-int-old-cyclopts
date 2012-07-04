@@ -2,6 +2,12 @@
 # if installed in a non-standard location,
 # the include directory must be added to the PATH variable
 FIND_PATH(CYCLOPTS_INCLUDE_DIR cyclopts/Variable.h
+  HINTS /usr/
+  HINTS /usr/include/
+  HINTS /usr/local/
+  HINTS /usr/local/include/
+  HINTS /usr/cyclopts/
+  HINTS /usr/local/cyclopts/
 )
 
 set(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR}/cyclopts)
