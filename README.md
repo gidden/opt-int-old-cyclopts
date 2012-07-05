@@ -11,14 +11,15 @@ To install cyclopts, one must first install:
    * blas(dev): http://www.netlib.org/blas/
    * lapack(dev): http://www.netlib.org/lapack/
    * zlib(dev): http://zlib.net/
-   * bz2(dev): http://www.bzip.org/downloads.html
+   * bz2(dev): http://www.bzip.org/
 
-If you choose to install coin in a non-standard location, you must
-add a path to the include directory in your PATH variable.
+If you choose to install coin-Cbc in a non-standard location, you must
+add the location of the include directory in your PATH environment 
+variable.
 
 Similarly, if you choose to install cyclopts in a non-standard 
-location, you must add a path to the include directory in your PATH 
-variable.
+location, you must add the location of the include directory in your 
+PATH environment variable.
 
 With these steps taken, one can perform the normal cmake, make, 
 make install steps.
@@ -31,6 +32,4 @@ the examples folder. In order to use this, one must:
   * install the cyclopts library using the above process
   * add the include directory to your PATH variable (if in a non-
   standard location)
-  * run cmake and make on the files in the examples directory (normal 
-  practice is to make a build directory, e.g. mkdir build && cd build 
-  && cmake ../ && make && ./app)
+  * run cmake and make on the files in the examples directory
