@@ -182,7 +182,7 @@ void CBCSolver::solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj,
   setUpConstraints(constraints);
   setUpVariablesAndObj(variables,obj);
   builder_.setOptimizationDirection(objDirection(obj));
-  print(constraints.size(),variables.size());
+  // print(constraints.size(),variables.size());
 
   // solve constraint problem
   OsiClpSolverInterface solver1;
