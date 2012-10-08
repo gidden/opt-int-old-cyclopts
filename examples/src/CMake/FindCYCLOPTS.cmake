@@ -8,7 +8,9 @@ FIND_PATH(CYCLOPTS_INCLUDE_DIR cyclopts/Variable.h
   HINTS /usr/local/include/
   HINTS /usr/cyclopts/
   HINTS /usr/local/cyclopts/
+  HINTS ${CYCLOPTS_HINT}/
 )
+MESSAGE("CYCLOPTS HINT: ${CYCLOPTS_HINT}")
 
 set(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR}/cyclopts)
 #MESSAGE("\tCYCLOPTS Include Dir: ${CYCLOPTS_INCLUDE_DIR}")

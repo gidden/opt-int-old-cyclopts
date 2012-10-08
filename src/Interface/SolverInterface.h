@@ -33,6 +33,10 @@ namespace Cyclopts{
     ObjFuncPtr obj_;
     /// the constraints
     std::vector<ConstraintPtr> constraints_;
+    /// a limit on the modifiers of constraints
+    double modifier_limit_;
+    /// checks if a modifier is within the acceptable bounds for modifiers
+    void checkModifierBounds(double& modifier);
   };
 }
 

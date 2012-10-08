@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <boost/any.hpp>
+#include <limits>
 
 #include "SolverTools.h"
 #include "CBCSolver.h"
@@ -21,7 +22,7 @@ int main() {
   csi.registerObjFunction(obj);
 
   // set up constraint
-  double unmet_demand = 5;
+  double unmet_demand = 999;
   ConstraintPtr c(new Constraint(Constraint::GTEQ,unmet_demand));
   csi.registerConstraint(c);
 
@@ -31,14 +32,14 @@ int main() {
   csi.registerVariable(x);
   VariablePtr y(new IntegerVariable(0,Variable::INF));
   y->setName("y");
-  csi.registerVariable(y);
+  //csi.registerVariable(y);
 
   // configure constraint and objective function
-  double cap_x = 1, cap_y = 2, cost_x = 2, cost_y = 3;
+  double cap_x = pow(10,10), cap_y = 0, cost_x = pow(10,10), cost_y = 3;
   csi.addVarToConstraint(x,cap_x,c);
-  csi.addVarToConstraint(y,cap_y,c);
+  //csi.addVarToConstraint(y,cap_y,c);
   csi.addVarToObjFunction(x,cost_x);
-  csi.addVarToObjFunction(y,cost_y);
+  //csi.addVarToObjFunction(y,cost_y);
 
   cout << obj->print() << endl;
   cout << c->print() << endl;
@@ -48,7 +49,7 @@ int main() {
 
   // output
   cout << "value of x: " << any_cast<int>(x->value()) << endl;
-  cout << "value of y: " << any_cast<int>(y->value()) << endl;
+  //cout << "value of y: " << any_cast<int>(y->value()) << endl;
 
   return 0;
 }
