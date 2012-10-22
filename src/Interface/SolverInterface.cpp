@@ -1,6 +1,6 @@
 #include "SolverInterface.h"
 #include "SolverTools.h"
-#include "Limits.h"
+#include "CycloptsLimits.h"
 
 #include <vector>
 #include <stdexcept>
