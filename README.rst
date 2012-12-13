@@ -7,7 +7,7 @@ Build & Install
 ---------------
 
 To install cyclopts, one must first install:
-   * coin-Cbc(v2.7): https://projects.coin-or.org/Cbc, which relies on
+   * coin-Cbc(v2.5): https://projects.coin-or.org/Cbc, which relies on
    * blas(dev): http://www.netlib.org/blas/
    * lapack(dev): http://www.netlib.org/lapack/
    * zlib(dev): http://zlib.net/
