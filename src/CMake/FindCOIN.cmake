@@ -30,6 +30,7 @@ MESSAGE(STATUS "COIN_ROOT_DIR hint is : ${COIN_ROOT_DIR}")
 #
 # Find the path based on a required header file
 #
+MESSAGE(STATUS "Coin multiple library dependency status:")
 FIND_PATH(COIN_INCLUDE_DIR coin/CbcModel.hpp
   HINTS "${COIN_INCLUDE_DIR}"
   HINTS "${COIN_ROOT_DIR}/include"
@@ -98,7 +99,7 @@ MESSAGE("\tCOIN OSI: ${COIN_OSI_LIBRARY}")
 #   HINTS ${COIN_INCLUDE_DIR}/../../lib/
 #   HINTS "${COIN_ROOT_DIR}/lib"
 # )
-# #MESSAGE("\tCOIN OSI CBC: ${COIN_OSI_CBC_LIBRARY}")
+# MESSAGE("\tCOIN OSI CBC: ${COIN_OSI_CBC_LIBRARY}")
 
 FIND_LIBRARY(COIN_OSI_CLP_LIBRARY
   NAMES OsiClp libOsiClp libOsiClp.so.0
@@ -122,7 +123,7 @@ MESSAGE("\tCOIN ZLIB: ${COIN_ZLIB_LIBRARY}")
 #   HINTS ${COIN_ROOT_DIR}/lib
 #   HINTS "${COIN_ROOT_DIR}/lib"
 # )
-# # #MESSAGE("\tCOIN BZ2: ${COIN_BZ2_LIBRARY}")
+# MESSAGE("\tCOIN BZ2: ${COIN_BZ2_LIBRARY}")
  
 INCLUDE(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(COIN DEFAULT_MSG
@@ -164,7 +165,7 @@ ENDIF(COIN_FOUND)
 # Report a synopsis of our findings
 #
 IF(COIN_INCLUDE_DIRS)
-  MESSAGE("\tFound COIN Include Dirs: ${COIN_INCLUDE_DIRS}")
+  MESSAGE(STATUS "Found COIN Include Dirs: ${COIN_INCLUDE_DIRS}")
 ELSE(COIN_INCLUDE_DIRS)
-  MESSAGE("\tCOIN Include Dirs NOT FOUND")
+  MESSAGE(STATUS "COIN Include Dirs NOT FOUND")
 ENDIF(COIN_INCLUDE_DIRS)
