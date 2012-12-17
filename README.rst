@@ -1,4 +1,4 @@
-cyclopts
+Cyclopts
 ========
 
 The Cyclus Optimization Library
@@ -6,16 +6,16 @@ The Cyclus Optimization Library
 Build & Install
 ---------------
 
-The full process of building and installing cyclopts can be broken into 
+The full process of building and installing Cyclopts can be broken into 
 two sections:
 
   #. building and installing the dependencies
-  #. building and installing cyclopts
+  #. building and installing Cyclopts
 
 Installing Dependencies
 +++++++++++++++++++++++
 
-To install cyclopts, one must first install:
+To install Cyclopts, one must first install:
 
   * coin-Cbc(min. v2.5): https://projects.coin-or.org/Cbc
 
@@ -61,12 +61,12 @@ The Hard Way: Building from Source
 The direct dependency for Cyclopts is coin-Cbc. It is possible to 
 build this dependency from 
 `source <https://projects.coin-or.org/Cbc/browser/stable/2.5>`_, but 
-you may find that you need to install additional depencies based on 
+you may find that you need to install additional dependencies based on 
 the version you're using. See the FindCOIN.cmake file in /src/CMake 
 for some comments.
 
 If you choose to install coin-Cbc in a non-standard location (i.e., 
-some location not in a standard envrionment variable that cmake checks
+some location not in a standard environment variable that cmake checks
 like PATH and LD_LIBRARY_PATH), you must inform CMake as to its 
 location using the command line argument COIN_ROOT_DIR.
 
@@ -80,17 +80,17 @@ in this guide:
   #. you have acquired the Cyclopts source code from the 
      `repo <https://github.com/cyclus/cyclopts>`_
   #. there is some master directory in which you're placing all
-     cyclus-related files called .../cyclus
-  #. you have placed the cyclopts repository in .../cyclus/cyclopts
+     Cyclus-related files called .../cyclus
+  #. you have placed the Cyclopts repository in .../cyclus/cyclopts
   #. you have a directory named .../cyclus/install in which you plan
-     to install all cyclus-related files
+     to install all Cyclus-related files
   #. you have a directory named .../cyclus/cyclopts/build in which 
      you plan to encapsulate all build-related files (they get in the
      way otherwise)
 
 Under these assumptions **and** if you used a package manager to 
 install coin-Cbc (i.e. it's installed in a standard location), the
-cyclopts building and installation process will look like:
+Cyclopts building and installation process will look like:
 
 .. code-block:: bash
 
@@ -114,12 +114,12 @@ Run an Example
 
 An example application that uses the Cyclopts library is provided in 
 the examples folder. This process again uses cmake, and will require
-variables for both the coin library location and cyclopts library 
+variables for both the coin library location and Cyclopts library 
 location. These are named COIN_ROOT_DIR and CYCLOPTS_ROOT_DIR.
 
 Assuming you have built and installed Cyclopts in the manner 
 described above, you can issue the following commands to build and 
-run the example (remeber, we installed Cyclopts in .../cyclus/install).
+run the example (remember, we installed Cyclopts in .../cyclus/install).
 
 .. code-block:: bash
 
