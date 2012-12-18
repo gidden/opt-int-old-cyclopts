@@ -1,10 +1,11 @@
+********
 Cyclopts
-========
+********
 
 The Cyclus Optimization Library
 
 Build & Install
----------------
+===============
 
 The full process of building and installing Cyclopts can be broken into 
 two sections:
@@ -13,7 +14,7 @@ two sections:
   #. building and installing Cyclopts
 
 Installing Dependencies
-+++++++++++++++++++++++
+-----------------------
 
 To install Cyclopts, one must first install:
 
@@ -24,7 +25,7 @@ the easy way and gloss over the hard way, which is for more
 experienced users anyway.
 
 The Easy Way: Using a Package Manager
-#####################################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have access to a package manager (e.g. Synaptic for Ubuntu), 
 then the installation process of the dependencies is easy -- you can
@@ -56,7 +57,7 @@ where you will replace the term package with each of the following:
   #. coinor-libcbc-dev 
 
 The Hard Way: Building from Source
-##################################
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The direct dependency for Cyclopts is coin-Cbc. It is possible to 
 build this dependency from 
@@ -71,7 +72,7 @@ like PATH and LD_LIBRARY_PATH), you must inform CMake as to its
 location using the command line argument COIN_ROOT_DIR.
 
 Installing Cyclopts
-+++++++++++++++++++
+-------------------
 
 Assuming you have the dependencies installed correctly, it's pretty
 straightforward to install Cyclopts. We make the following assumptions
@@ -110,7 +111,7 @@ like:
     .../cyclus/cyclopts/build$ make && make install
 
 Run an Example
---------------
+==============
 
 An example application that uses the Cyclopts library is provided in 
 the examples folder. This process again uses cmake, and will require
