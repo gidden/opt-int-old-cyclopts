@@ -4,40 +4,6 @@ Cyclopts
 
 The Cyclus Optimization Library
 
-LICENSE
-=======
-::
-
-    Copyright (c) 2010-2012, University of Wisconsin Computational Nuclear Engineering Research Group
-     All rights reserved.
-    
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions are met:
-    
-      - Redistributions of source code must retain the above copyright notice,
-        this list of conditions and the following disclaimer.
-      
-      - Redistributions in binary form must reproduce the above copyright
-        notice, this list of conditions and the following disclaimer in the
-        documentation and/or other materials provided with the distribution.
-      
-      - Neither the name of the University of Wisconsin Computational
-        Nuclear Engineering Research Group nor the names of its
-        contributors may be used to endorse or promote products derived
-        from this software without specific prior written permission.
-    
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-    ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-
 Build & Install
 ===============
 
@@ -52,11 +18,12 @@ Installing Dependencies
 
 To install Cyclopts, one must first install:
 
+  * boost: http://www.boost.org/
   * coin-Cbc(min. v2.5): https://projects.coin-or.org/Cbc
 
-Now, there's an easy way to install coin and a hard way. I'll detail
-the easy way and gloss over the hard way, which is for more
-experienced users anyway.
+Now, there's an easy way to install these dependencies and a hard
+way. I'll detail the easy way and gloss over the hard way, which is
+for more experienced users anyway.
 
 The Easy Way: Using a Package Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,11 +45,12 @@ following command:
 
 .. code-block:: bash
 
-  sudo apt-get install package
+  sudo apt-get install <package>
 
-where you will replace the term package with each of the following:
+where you will replace the term <package> with each of the following:
 
   #. g++
+  #. libboost-dev
   #. cmake
   #. libbz2-dev
   #. coinor-libcoinutils-dev
@@ -92,6 +60,10 @@ where you will replace the term package with each of the following:
 
 The Hard Way: Building from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The installation instructions to install boost from source are
+provided on their `website
+<http://www.boost.org/doc/libs/1_52_0/doc/html/bbv2/installation.html>`_.
 
 The direct dependency for Cyclopts is coin-Cbc. It is possible to 
 build this dependency from 
