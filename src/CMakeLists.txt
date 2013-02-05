@@ -59,14 +59,11 @@ FIND_PACKAGE( COIN REQUIRED )
 SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${COIN_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${COIN_LIBRARIES})
 
-# # Include the boost header files and the program_options library
-# set(Boost_USE_STATIC_LIBS       OFF)
-# set(Boost_USE_STATIC_RUNTIME    OFF)
-# FIND_PACKAGE( Boost COMPONENTS program_options filesystem system REQUIRED)
-# SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-# set(LIBS ${LIBS} ${Boost_PROGRAM_OPTIONS_LIBRARY})
-# set(LIBS ${LIBS} ${Boost_SYSTEM_LIBRARY})
-# set(LIBS ${LIBS} ${Boost_FILESYSTEM_LIBRARY})
+# # Include the boost header files
+set(Boost_USE_STATIC_LIBS       OFF)
+set(Boost_USE_STATIC_RUNTIME    OFF)
+FIND_PACKAGE( Boost REQUIRED)
+SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
  
 # include all the directories we just found
 INCLUDE_DIRECTORIES( ${CYCLOPTS_INCLUDE_DIR} )

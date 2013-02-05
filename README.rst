@@ -18,11 +18,12 @@ Installing Dependencies
 
 To install Cyclopts, one must first install:
 
+  * boost: http://www.boost.org/
   * coin-Cbc(min. v2.5): https://projects.coin-or.org/Cbc
 
-Now, there's an easy way to install coin and a hard way. I'll detail
-the easy way and gloss over the hard way, which is for more
-experienced users anyway.
+Now, there's an easy way to install these dependencies and a hard
+way. I'll detail the easy way and gloss over the hard way, which is
+for more experienced users anyway.
 
 The Easy Way: Using a Package Manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,11 +45,12 @@ following command:
 
 .. code-block:: bash
 
-  sudo apt-get install package
+  sudo apt-get install <package>
 
-where you will replace the term package with each of the following:
+where you will replace the term <package> with each of the following:
 
   #. g++
+  #. libboost-dev
   #. cmake
   #. libbz2-dev
   #. coinor-libcoinutils-dev
@@ -59,6 +61,10 @@ where you will replace the term package with each of the following:
 
 The Hard Way: Building from Source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The installation instructions to install boost from source are
+provided on their `website
+<http://www.boost.org/doc/libs/1_52_0/doc/html/bbv2/installation.html>`_.
 
 The direct dependency for Cyclopts is coin-Cbc. It is possible to 
 build this dependency from 
