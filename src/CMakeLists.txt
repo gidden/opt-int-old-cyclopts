@@ -59,21 +59,21 @@ FIND_PACKAGE( COIN REQUIRED )
 SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${COIN_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${COIN_LIBRARIES})
 
-# Include the boost header files and the program_options library
+# # Include the boost header files
 set(Boost_USE_STATIC_LIBS       OFF)
 set(Boost_USE_STATIC_RUNTIME    OFF)
-FIND_PACKAGE( Boost COMPONENTS program_options filesystem system REQUIRED)
+FIND_PACKAGE( Boost REQUIRED)
 SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-set(LIBS ${LIBS} ${Boost_PROGRAM_OPTIONS_LIBRARY})
-set(LIBS ${LIBS} ${Boost_SYSTEM_LIBRARY})
-set(LIBS ${LIBS} ${Boost_FILESYSTEM_LIBRARY})
  
 # include all the directories we just found
 INCLUDE_DIRECTORIES( ${CYCLOPTS_INCLUDE_DIR} )
 
+# set the install name target (for OSX) 
+set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib)
+
 # Build the cyclopts library from the CYCLOPTS_SRC source files
 ADD_LIBRARY( cyclopts ${CYCLOPTS_SRC} )
-TARGET_LINK_LIBRARIES( cyclopts dl ${LIBS} )
+TARGET_LINK_LIBRARIES( cyclopts ${CMAKE_DL_LIBS} ${LIBS} )
 
 #install the files
 install(TARGETS cyclopts DESTINATION lib)
