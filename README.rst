@@ -135,3 +135,12 @@ run the example (remember, we installed Cyclopts in .../cyclus/install).
     .../cyclus/cyclopts/examples/build$ cmake ../src -DCYCLOPTS_ROOT_DIR=../../../install -DCOIN_ROOT_DIR=/the/path/to/coin/install
     .../cyclus/cyclopts/examples/build$ make
     .../cyclus/cyclopts/examples/build$ ./app
+
+Some Notes
+==========
+
+COIN-OR is the current tool used to solve LPs and MILPs, however, others exist:
+
+   #. `glpk <http://www.gnu.org/software/glpk/>`_
+   #. `pyomo <https://software.sandia.gov/trac/coopr/wiki/Pyomo>`_
+   #. `symphony <https://software.sandia.gov/trac/coopr/wiki/Pyomo>`_
