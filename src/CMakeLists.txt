@@ -68,9 +68,12 @@ SET(CYCLOPTS_INCLUDE_DIR ${CYCLOPTS_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
 # include all the directories we just found
 INCLUDE_DIRECTORIES( ${CYCLOPTS_INCLUDE_DIR} )
 
+# set the install name target (for OSX) 
+set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib)
+
 # Build the cyclopts library from the CYCLOPTS_SRC source files
 ADD_LIBRARY( cyclopts ${CYCLOPTS_SRC} )
-TARGET_LINK_LIBRARIES( cyclopts dl ${LIBS} )
+TARGET_LINK_LIBRARIES( cyclopts ${CMAKE_DL_LIBS} ${LIBS} )
 
 #install the files
 install(TARGETS cyclopts DESTINATION lib)
