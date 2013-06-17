@@ -102,28 +102,26 @@ Cyclopts building and installation process will look like:
 
 .. code-block:: bash
 
-    .../cyclus/cyclopts$ cd build
-    .../cyclus/cyclopts/build$ cmake ../src -DCMAKE_INSTALL_PREFIX=../../install
-    .../cyclus/cyclopts/build$ make && make install
+    .../cyclus/cyclopts$ python setup.py --prefix=../install
 
 If you have installed coin-Cbc from source or otherwise have it 
-installed in a non-standard location, you should make use of the CMake
-COIN_ROOT_DIR variable. The otherwise identical process would look 
-like:
+installed in a non-standard location, you should add an appropriate flag
 
 .. code-block:: bash
 
-    .../cyclus/cyclopts$ cd build
-    .../cyclus/cyclopts/build$ cmake ../src -DCMAKE_INSTALL_PREFIX=../../install -DCOIN_ROOT_DIR=/the/path/to/coin/install
-    .../cyclus/cyclopts/build$ make && make install
+    .../cyclus/cyclopts$ python setup.py --prefix=../install --coinRoot=path/to/coin/libraries
+
+You can always investigate the full set of installtion options via:
+
+.. code-block:: bash
+
+    .../cyclus/cyclopts$ python setup.py -h
 
 Run an Example
 ==============
 
 An example application that uses the Cyclopts library is provided in 
-the examples folder. This process again uses cmake, and will require
-variables for both the coin library location and Cyclopts library 
-location. These are named COIN_ROOT_DIR and CYCLOPTS_ROOT_DIR.
+the examples folder. 
 
 Assuming you have built and installed Cyclopts in the manner 
 described above, you can issue the following commands to build and 
@@ -131,10 +129,16 @@ run the example (remember, we installed Cyclopts in .../cyclus/install).
 
 .. code-block:: bash
 
-    .../cyclus/cyclopts$ cd examples && mkdir build && cd build
-    .../cyclus/cyclopts/examples/build$ cmake ../src -DCYCLOPTS_ROOT_DIR=../../../install -DCOIN_ROOT_DIR=/the/path/to/coin/install
-    .../cyclus/cyclopts/examples/build$ make
-    .../cyclus/cyclopts/examples/build$ ./app
+    .../cyclus/cyclopts$ cd examples
+    .../cyclus/cyclopts/examples$ python setup.py --cycloptsRoot=../../install
+
+Again, if you installed coin in a nonstandard location, you'll also have to
+inform the setup script.
+
+.. code-block:: bash
+
+    .../cyclus/cyclopts$ cd examples
+    .../cyclus/cyclopts/examples$ python setup.py --cycloptsRoot=../../install --coinRoot=path/to/coin/libraries
 
 Some Notes
 ==========
