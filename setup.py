@@ -22,43 +22,39 @@ def check_windows_cmake(cmake_cmd):
         cmake_cmd = ' '.join(cmake_cmd)
 
 def install_cyclopts(args):
-    root_dir = os.getcwd()
-    build_dir = os.path.join(root_dir, 'build')
-    src_dir = os.path.join(root_dir, 'src')
-
-    if not os.path.exists(build_dir):
-        os.mkdir(build_dir)
+    if not os.path.exists(args.buildDir):
+        os.mkdir(args.buildDir)
     elif args.replace:
-        shutil.rmtree(build_dir)
-        os.mkdir(build_dir)
-    os.chdir(build_dir)
+        shutil.rmtree(args.buildDir)
+        os.mkdir(args.buildDir)
         
-    makefile = os.path.join(build_dir, 'Makefile')
-    if not os.path.exists(makefile):
-        
-        cmake_cmd = ['cmake', src_dir]
-        if args.prefix:
-            install_dir = os.path.join(root_dir, args.prefix)
-            cmake_cmd += ['-DCMAKE_INSTALL_PREFIX=' + install_dir]
-        if args.coinRoot:
-            coin_dir = os.path.join(root_dir, args.coinRoot)
-            cmake_cmd += ['-DCOIN_ROOT_DIR=' + coin_dir]
+    root_dir = os.path.split(__file__)[0]
+    src_dir = os.path.join(root_dir, 'src')
+    makefile = os.path.join(args.buildDir, 'Makefile')
 
+    if not os.path.exists(makefile):
+        cmake_cmd = ['cmake', os.path.abspath(src_dir)]
+        if args.prefix:
+            cmake_cmd += ['-DCMAKE_INSTALL_PREFIX=' + os.path.abspath(args.prefix)]
+        if args.coinRoot:
+            cmake_cmd += ['-DCOIN_ROOT_DIR=' + os.path.abspath(args.coinRoot)]
         check_windows_cmake(cmake_cmd)
-        rtn = subprocess.check_call(cmake_cmd, cwd=build_dir, shell=(os.name=='nt'))
+        rtn = subprocess.check_call(cmake_cmd, cwd=args.buildDir, shell=(os.name=='nt'))
 
     make_cmd = ['make']
     if args.threads:
         make_cmd += ['-j' + str(args.threads)]
     make_cmd += ['install']
-    rtn = subprocess.check_call(make_cmd, cwd=build_dir)
-    os.chdir(root_dir)
+    rtn = subprocess.check_call(make_cmd, cwd=args.buildDir, shell=(os.name=='nt'))        
 
 def main():
     description = "Install Cyclopts. Optional arguments include a path to "+\
         "the Cyclopts source, an installation prefix path and a path to "+\
         "the coin-OR libraries."
     parser = ap.ArgumentParser(description=description)
+
+    buildDir = 'where to place the build directory'
+    parser.add_argument('--buildDir', help=buildDir, default='build')
 
     replace = 'whether or not to remove the build directory if it exists'
     parser.add_argument('--replace', type=bool, help=replace, default=True)
