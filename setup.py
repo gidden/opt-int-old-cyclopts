@@ -38,6 +38,8 @@ def install_cyclopts(args):
             cmake_cmd += ['-DCMAKE_INSTALL_PREFIX=' + os.path.abspath(args.prefix)]
         if args.coinRoot:
             cmake_cmd += ['-DCOIN_ROOT_DIR=' + os.path.abspath(args.coinRoot)]
+        if args.boostRoot:
+            cmake_cmd += ['-DBOOST_ROOT=' + os.path.abspath(args.boostRoot)]
         check_windows_cmake(cmake_cmd)
         rtn = subprocess.check_call(cmake_cmd, cwd=args.buildDir, shell=(os.name=='nt'))
 
@@ -48,9 +50,12 @@ def install_cyclopts(args):
     rtn = subprocess.check_call(make_cmd, cwd=args.buildDir, shell=(os.name=='nt'))        
 
 def main():
-    description = "Install Cyclopts. Optional arguments include a path to "+\
-        "the Cyclopts source, an installation prefix path and a path to "+\
-        "the coin-OR libraries."
+    description = "Install Cyclopts. Optional arguments include: " +
+    "a path to the Cyclopts source, " + 
+    "an installation prefix path, " + 
+    "a path to the coin-OR libraries, " +
+    " and " +
+    "a path to the Boost libraries."
     parser = ap.ArgumentParser(description=description)
 
     buildDir = 'where to place the build directory'
@@ -67,6 +72,9 @@ def main():
 
     coin = "the relative path to the Coin-OR libraries directory"
     parser.add_argument('--coinRoot', help=coin)
+
+    boost = "the relative path to the Boost libraries directory"
+    parser.add_argument('--boostRoot', help=boost)
 
     install_cyclopts(parser.parse_args())        
 

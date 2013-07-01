@@ -38,6 +38,8 @@ def install_examples(args):
             cmake_cmd += ['-DCYCLOPTS_ROOT_DIR=' + os.path.abspath(args.cycloptsRoot)]
         if args.coinRoot:
             cmake_cmd += ['-DCOIN_ROOT_DIR=' + os.path.abspath(args.coinRoot)]
+        if args.boostRoot:
+            cmake_cmd += ['-DBOOST_ROOT=' + os.path.abspath(args.boostRoot)]
         check_windows_cmake(cmake_cmd)
         rtn = subprocess.check_call(cmake_cmd, cwd=args.buildDir, shell=(os.name=='nt'))
 
@@ -65,6 +67,9 @@ def main():
 
     coin = "the relative path to the Coin-OR libraries directory"
     parser.add_argument('--coinRoot', help=coin)
+
+    boost = "the relative path to the Boost libraries directory"
+    parser.add_argument('--boostRoot', help=boost)
 
     install_examples(parser.parse_args())        
 
