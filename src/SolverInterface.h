@@ -14,22 +14,22 @@ namespace cyclopts {
     SolverInterface(SolverPtr& solver);
 
     /// add a constraint
-    void registerVariable(VariablePtr& v);
+    void RegisterVariable(VariablePtr& v);
 
     /// set the objective function
-    void registerObjFunction(ObjFuncPtr obj);
+    void RegisterObjFunction(ObjFuncPtr obj);
 
     /// add a variable to the objective function
-    void addVarToObjFunction(VariablePtr& v, double& modifier);
+    void AddVarToObjFunction(VariablePtr& v, double& modifier);
 
     /// add a constraint
-    void registerConstraint(ConstraintPtr& c);
+    void RegisterConstraint(ConstraintPtr& c);
 
     /// add a variable to a constraint
-    void addVarToConstraint(VariablePtr& v, double& modifier, ConstraintPtr& c);
+    void AddVarToConstraint(VariablePtr& v, double& modifier, ConstraintPtr& c);
 
     /// solve the constraint program
-    void solve();
+    void Solve();
 
    private:
     /// the solver
@@ -48,7 +48,7 @@ namespace cyclopts {
     double modifier_limit_;
 
     /// checks if a modifier is within the acceptable bounds for modifiers
-    void checkModifierBounds(double& modifier);
+    void CheckModifierBounds(double& modifier);
   };
 }
 

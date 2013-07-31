@@ -10,7 +10,6 @@
 #include "Variable.h"
 
 namespace cyclopts {
-  class Function;
   class Constraint;
   typedef boost::shared_ptr<Constraint> ConstraintPtr;
   class ObjectiveFunction;
@@ -30,7 +29,7 @@ namespace cyclopts {
     virtual ~Function() {};
 
     /// get a modifier
-    double getModifier(VariablePtr& v);
+    double GetModifier(VariablePtr& v);
 
     /// get the beginning iterator to constituents_
     std::map<VariablePtr,double>::iterator begin();
@@ -39,17 +38,17 @@ namespace cyclopts {
     std::map<VariablePtr,double>::iterator end();
 
     /// get number of constituents
-    int nConstituents();
+    int NumConstituents();
 
     /// print the function
-    virtual std::string print();
+    virtual std::string Print();
 
    private:
     /// a container of all variables and their corresponding constant
     std::map<VariablePtr,double> constituents_;    
 
     /// add a constituent
-    void addConstituent(VariablePtr& v, double& modifer);
+    void AddConstituent(VariablePtr& v, double& modifer);
 
     /// the solver interface builds functions knowing what variables exist
     friend class SolverInterface;
@@ -59,52 +58,52 @@ namespace cyclopts {
   class Constraint : public Function {
    public:
     /// the equality relation
-    enum equality_relation {EQ,GT,GTEQ,LT,LTEQ};
+    enum EqualityRelation {EQ,GT,GTEQ,LT,LTEQ};
 
     /// constructor
-    Constraint(equality_relation eq_r, double rhs);
+    Constraint(EqualityRelation eq_r, double rhs);
 
     /// get the equality relation
-    equality_relation equalityRelation();
+    EqualityRelation eq_relation();
 
     /// get the rhs
     double rhs();
 
     /// print the constraint
-    virtual std::string print();
+    virtual std::string Print();
 
    private:
     /// the type of equality relation
-    equality_relation eq_r_;
+    EqualityRelation eq_relation_;
 
     /// the rhs value
     double rhs_;
 
-    /// turn eq_r_ into a string
-    std::string eq_rToStr();
+    /// turn eq_relation_ into a string
+    std::string EqRToStr();
   };
   
   /// derived class for objective functions
   class ObjectiveFunction : public Function {
   public: 
     /// the possible direction
-    enum direction {MIN,MAX};
+    enum Direction {MIN,MAX};
 
     /// constructor
-    ObjectiveFunction(direction);
+    explicit ObjectiveFunction(Direction dir);
 
-    /// get the direction
-    direction dir();
+    /// get the Direction
+    Direction dir();
 
     /// print the objective function
-    virtual std::string print();
+    virtual std::string Print();
 
   private:
-    /// the direction
-    direction dir_;
+    /// the Direction
+    Direction dir_;
 
     /// turn dir_ into a string
-    std::string dirToStr();
+    std::string DirToStr();
   };
 }
 

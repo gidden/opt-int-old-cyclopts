@@ -16,13 +16,13 @@ namespace cyclopts {
   class Variable {
    public:  
     /// enum for possible bound types
-    enum bound {NEG_INF,INF,FINITE};
+    enum Bound {NEG_INF,INF,FINITE};
 
     /// enum for possible types
-    enum var_type {INT,LINEAR};
+    enum VarType {INT,LINEAR};
 
     /// constructor, sets id_, lbound_, ubound_
-    Variable(bound l, bound u, var_type t);
+    Variable(Bound l, Bound u, VarType t);
 
     /// virtual destructor for a base class
     virtual ~Variable() {};
@@ -31,25 +31,25 @@ namespace cyclopts {
     int id();
 
     /// get value
-    var_type type();
+    VarType type();
 
     /// lbound getter
-    bound lbound();
+    Bound lbound();
 
     /// ubound getter
-    bound ubound();
+    Bound ubound();
 
     /// get name
     std::string name();
 
     /// set name
-    void setName(std::string name);
+    void set_name(std::string name);
 
     /// get value
     boost::any value();
 
     /// set value
-    void setValue(boost::any v);
+    void set_value(boost::any v);
 
    private:
     /// global id incrementor
@@ -59,13 +59,13 @@ namespace cyclopts {
     int id_;
 
     /// type
-    var_type type_;
+    VarType type_;
 
     /// lower bound
-    bound lbound_;
+    Bound lbound_;
 
     /// upper bound
-    bound ubound_;
+    Bound ubound_;
 
     /// name
     std::string name_;
@@ -78,28 +78,28 @@ namespace cyclopts {
   class LinearVariable : public Variable {
    public:
     /// constructor for bounds NEG_INF : INF
-    LinearVariable(bound lb, bound ub);
+    LinearVariable(Bound lb, Bound ub);
 
     /// constructor for bounds FINITE : INF
-    LinearVariable(double lb_val, bound ub);
+    LinearVariable(double lb_val, Bound ub);
 
     /// constructor for NEG_INF : FINITE
-    LinearVariable(bound lb, double ub_val);
+    LinearVariable(Bound lb, double ub_val);
 
     /// constructor for FINITE : FINITE
     LinearVariable(double lb_val, double ub_val);
 
-    /// lbound value getter
+    /// lBound value getter
     double lbound_val();
 
-    /// ubound value getter
+    /// uBound value getter
     double ubound_val();
 
    private:
-    /// lower bound value
+    /// lower Bound value
     double lbound_val_;
 
-    /// upper bound value
+    /// upper Bound value
     double ubound_val_;
   };
 
@@ -107,28 +107,28 @@ namespace cyclopts {
   class IntegerVariable : public Variable {
    public:
     /// constructor for bounds NEG_INF : INF
-    IntegerVariable(bound lb, bound ub);
+    IntegerVariable(Bound lb, Bound ub);
 
     /// constructor for bounds FINITE : INF
-    IntegerVariable(int lb_val, bound ub);  
+    IntegerVariable(int lb_val, Bound ub);  
 
     /// constructor for NEG_INF : FINITE
-    IntegerVariable(bound lb, int ub_val);
+    IntegerVariable(Bound lb, int ub_val);
 
     /// constructor for FINITE : FINITE
     IntegerVariable(int lb_val, int ub_val);    
 
-    /// lbound value getter
+    /// lBound value getter
     int lbound_val();
 
-    /// ubound value getter
+    /// uBound value getter
     int ubound_val();
 
    private:
-    /// lower bound value
+    /// lower Bound value
     int lbound_val_;
 
-    /// upper bound value
+    /// upper Bound value
     int ubound_val_;
   };
 }

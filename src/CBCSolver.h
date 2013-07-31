@@ -15,49 +15,49 @@ namespace cyclopts {
   class CBCSolver : public Solver {
    public:
     /// solve an MIP
-    virtual void solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+    virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
                        std::vector<ConstraintPtr>& constraints);
    private:
     /// the model builder
     CoinModel builder_;
 
     /// return +/- COIN_DBL_MAX 
-    double doubleBound(Variable::bound b);
+    double DoubleBound(Variable::Bound b);
 
     /// return +/- COIN_INT_MAX 
-    int intBound(Variable::bound b);
+    int IntBound(Variable::Bound b);
 
     /// get coin-specific bound for a constraint
-    std::pair<double,double> constraintBounds(ConstraintPtr& c);
+    std::pair<double,double> ConstraintBounds(ConstraintPtr& c);
 
     /// set variable/objective function values
-    void setUpVariablesAndObj(std::vector<VariablePtr>& variables, 
+    void SetUpVariablesAndObj(std::vector<VariablePtr>& variables, 
                               ObjFuncPtr& obj);
 
     /// set up constraints
-    void setUpConstraints(std::vector<ConstraintPtr>& constraints);
+    void SetUpConstraints(std::vector<ConstraintPtr>& constraints);
 
     /// set the objective direction
-    double objDirection(ObjFuncPtr& obj);
+    double ObjDirection(ObjFuncPtr& obj);
 
     /// solve the model
-    void solveModel(CoinCbcModel& model);
+    void SolveModel(CoinCbcModel& model);
 
     /// populate the solution in the variable vector
-    void populateSolution(CoinCbcModel& model,
+    void PopulateSolution(CoinCbcModel& model,
                           std::vector<VariablePtr>& variables);
 
     /// print variables info
-    void printVariables(int n_const);
+    void PrintVariables(int n_const);
 
     /// print objective function info
-    void printObjFunction(int n_vars);
+    void PrintObjFunction(int n_vars);
 
     /// print constraint info
-    void printConstraints(int n_const, int n_vars);
+    void PrintConstraints(int n_const, int n_vars);
 
     /// prints each other printing function
-    void print(int n_const, int n_vars);
+    void Print(int n_const, int n_vars);
   };
 }
 

@@ -8,7 +8,6 @@
 
 namespace cyclopts {
   class Solver;
-  /// a smart pointer to the base class
   typedef boost::shared_ptr<Solver> SolverPtr;
 }
 
@@ -25,7 +24,7 @@ namespace cyclopts {
     virtual ~Solver() {};
 
     /// solve method to be overloaded by derived classes
-    virtual void solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+    virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
                        std::vector<ConstraintPtr>& constraints) = 0;
 
    protected:
@@ -33,7 +32,7 @@ namespace cyclopts {
     std::map<VariablePtr,int> index_;
 
     /// match variable pointers to indices, populating indicies_
-    void populateIndices(std::vector<VariablePtr>& variables);
+    void PopulateIndices(std::vector<VariablePtr>& variables);
   };
 }
 

@@ -10,19 +10,18 @@
 using namespace std;
 using namespace cyclopts;
 
-// +++ Function methods ++
 // -----------------------------------------------------------------------------
 Function::Function() {
   constituents_ = map<VariablePtr,double>();
 }
 
 // -----------------------------------------------------------------------------
-void Function::addConstituent(VariablePtr& v, double& modifier) {
+void Function::AddConstituent(VariablePtr& v, double& modifier) {
   constituents_.insert(pair<VariablePtr,double>(v,modifier));
 }
 
 // -----------------------------------------------------------------------------
-double Function::getModifier(VariablePtr& v) {
+double Function::GetModifier(VariablePtr& v) {
   return constituents_[v];
 }
 
@@ -37,12 +36,12 @@ std::map<VariablePtr,double>::iterator Function::end() {
 }
 
 // -----------------------------------------------------------------------------
-int Function::nConstituents() { 
+int Function::NumConstituents() { 
   return constituents_.size(); 
 }
 
 // -----------------------------------------------------------------------------
-std::string Function::print() { 
+std::string Function::Print() { 
   stringstream ss;
   int count = 0;
   map<VariablePtr,double>::iterator it;
@@ -56,14 +55,13 @@ std::string Function::print() {
   return ss.str();
 }
 
-// +++ Constraint methods ++
 // -----------------------------------------------------------------------------
-Constraint::Constraint(Constraint::equality_relation eq_r, double rhs) : 
-  eq_r_(eq_r), rhs_(rhs) {};
+Constraint::Constraint(Constraint::EqualityRelation eq_r, double rhs)
+    : eq_relation_(eq_r), rhs_(rhs) {};
 
 // -----------------------------------------------------------------------------
-Constraint::equality_relation Constraint::equalityRelation() { 
-  return eq_r_; 
+Constraint::EqualityRelation Constraint::eq_relation() { 
+  return eq_relation_; 
 }
 
 // -----------------------------------------------------------------------------
@@ -72,15 +70,15 @@ double Constraint::rhs() {
 }
 
 // -----------------------------------------------------------------------------
-std::string Constraint::print() {
+std::string Constraint::Print() {
   stringstream ss;
-  ss << "s.t. " << Function::print() << " " << eq_rToStr() << " " << rhs_;
+  ss << "s.t. " << Function::Print() << " " << EqRToStr() << " " << rhs_;
   return ss.str();
 }
 
 // -----------------------------------------------------------------------------
-std::string Constraint::eq_rToStr() {
-  switch(eq_r_) {
+std::string Constraint::EqRToStr() {
+  switch(eq_relation_) {
   case EQ:
     return "=";
     break;
@@ -99,25 +97,24 @@ std::string Constraint::eq_rToStr() {
   }
 }
 
-// +++ ObjectiveFunction methods ++
 // -----------------------------------------------------------------------------
-ObjectiveFunction::ObjectiveFunction(ObjectiveFunction::direction dir) : 
-  dir_(dir) {};
+ObjectiveFunction::ObjectiveFunction(ObjectiveFunction::Direction dir)
+    : dir_(dir) {};
 
 // -----------------------------------------------------------------------------
-ObjectiveFunction::direction ObjectiveFunction::dir() {
+ObjectiveFunction::Direction ObjectiveFunction::dir() {
   return dir_;
 }
 
 // -----------------------------------------------------------------------------
-std::string ObjectiveFunction::print() {
+std::string ObjectiveFunction::Print() {
   stringstream ss;
-  ss << dirToStr() << " " << Function::print();
+  ss << DirToStr() << " " << Function::Print();
   return ss.str();
 }
 
 // -----------------------------------------------------------------------------
-std::string ObjectiveFunction::dirToStr() {
+std::string ObjectiveFunction::DirToStr() {
   switch(dir_) {
   case MIN:
     return "min";
