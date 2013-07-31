@@ -5,7 +5,7 @@
 #include <map>
 #include <boost/shared_ptr.hpp>
 
-namespace cyclopts{
+namespace cyclopts {
   class Solver;
   /// a smart pointer to the base class
   typedef boost::shared_ptr<Solver> SolverPtr;
@@ -16,17 +16,21 @@ namespace cyclopts{
 namespace cyclopts {
   /// abstract base class for different types of constraint program solvers
   class Solver {
-  public:
+   public:
     /// constructor
     Solver();
+
     /// virtual destructor
     virtual ~Solver() {};
+
     /// solve method to be overloaded by derived classes
     virtual void solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
                        std::vector<ConstraintPtr>& constraints) = 0;
-  protected:
+
+   protected:
     /// the indices used for each variable
     std::map<VariablePtr,int> index_;
+
     /// match variable pointers to indices, populating indicies_
     void populateIndices(std::vector<VariablePtr>& variables);
   };
