@@ -25,24 +25,25 @@ endif()
 
 SET(CYCLOPTS_EXECUTABLE_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
-# Includes the directories in which there are source files. 
-SET(CYCLOPTS_INCLUDE_DIR
-  ${CYCLOPTS_SRC_DIR}
-  ${CYCLOPTS_SRC_DIR}/Interface
-  ${CYCLOPTS_SRC_DIR}/Solver
-  ${CYCLOPTS_SRC_DIR}/Utility
+# Add any new core source files to this list.
+SET( CYCLOPTS_SRC 
+  ${CMAKE_CURRENT_SOURCE_DIR}/SolverInterface.cpp  
+  ${CMAKE_CURRENT_SOURCE_DIR}/Solver.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/CBCSolver.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Variable.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Function.cpp
   )
 
 # Add any new core source files to this list.
-SET( CYCLOPTS_SRC )
-
-# Add any new core source files to this list.
-SET( CYCLOPTS_INCL )
-
-# add subdirectories
-ADD_SUBDIRECTORY(Interface)
-ADD_SUBDIRECTORY(Solver)
-ADD_SUBDIRECTORY(Utility)
+SET( CYCLOPTS_INCL 
+  ${CMAKE_CURRENT_SOURCE_DIR}/SolverInterface.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/Solver.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/CBCSolver.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/SolverTools.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/Variable.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/Function.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/CycloptsLimits.h
+  )
 
 # find blas and link to it
 FIND_PACKAGE( BLAS REQUIRED )
