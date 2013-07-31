@@ -1,4 +1,4 @@
-#include "CBCSolver.h"
+#include "cbc_solver.h"
 
 #include <iostream>
 #include <utility>
@@ -10,7 +10,7 @@
 #include "CbcModel.hpp"
 #include "OsiClpSolverInterface.hpp"
 
-#include "CycloptsLimits.h"
+#include "cyclopts_limits.h"
 
 using namespace std;
 using namespace boost;

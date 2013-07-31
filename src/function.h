@@ -7,7 +7,7 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "Variable.h"
+#include "variable.h"
 
 namespace cyclopts {
 class Constraint;
@@ -16,7 +16,7 @@ class ObjectiveFunction;
 typedef boost::shared_ptr<ObjectiveFunction> ObjFuncPtr;
 }
 
-#include "SolverInterface.h"
+#include "solver_interface.h"
 
 namespace cyclopts {
 /// function base class

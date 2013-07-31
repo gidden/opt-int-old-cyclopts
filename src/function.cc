@@ -1,11 +1,11 @@
-#include "Function.h"
+#include "function.h"
 
 #include <utility>
 #include <map>
 #include <string>
 #include <sstream>
 
-#include "Variable.h"
+#include "variable.h"
 
 using namespace std;
 using namespace cyclopts;

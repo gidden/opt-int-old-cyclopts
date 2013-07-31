@@ -27,22 +27,22 @@ SET(CYCLOPTS_EXECUTABLE_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 # Add any new core source files to this list.
 SET( CYCLOPTS_SRC 
-  ${CMAKE_CURRENT_SOURCE_DIR}/SolverInterface.cpp  
-  ${CMAKE_CURRENT_SOURCE_DIR}/Solver.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/CBCSolver.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/Variable.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/Function.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/solver_interface.cc  
+  ${CMAKE_CURRENT_SOURCE_DIR}/solver.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/cbc_solver.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/variable.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/function.cc
   )
 
 # Add any new core source files to this list.
 SET( CYCLOPTS_INCL 
-  ${CMAKE_CURRENT_SOURCE_DIR}/SolverInterface.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/Solver.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/CBCSolver.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/SolverTools.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/Variable.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/Function.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/CycloptsLimits.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/solver_interface.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/solver.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/cbc_solver.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/solver_tools.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/variable.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/function.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/cyclopts_limits.h
   )
 
 # find blas and link to it

@@ -5,7 +5,7 @@
 #include "CoinModel.hpp"
 #include "CbcModel.hpp"
 
-#include "SolverTools.h"
+#include "solver_tools.h"
 
 /// typedef cbc model to abstract away coin's library
 typedef CbcModel CoinCbcModel;

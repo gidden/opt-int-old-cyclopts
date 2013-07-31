@@ -1,11 +1,11 @@
-#include "SolverInterface.h"
+#include "solver_interface.h"
 
 #include <stdexcept>
 #include <vector>
 #include <sstream>
 #include <iostream>
 
-#include "CycloptsLimits.h"
+#include "cyclopts_limits.h"
 
 using namespace std;
 using namespace cyclopts;
