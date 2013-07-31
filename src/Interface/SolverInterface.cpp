@@ -14,7 +14,7 @@ using namespace cyclopts;
 SolverInterface::SolverInterface(SolverPtr& s) : solver_(s) {
   constraints_ = vector<ConstraintPtr>();
   variables_ = vector<VariablePtr>();
-  modifier_limit_ = Limits::modifier_limit; // this is a bandaid, I don't know why it has to happen... somethings up with cbc
+  modifier_limit_ = modifier_limit; // this is a bandaid, I don't know why it has to happen... somethings up with cbc
 };
 
 // -----------------------------------------------------------------------------------
