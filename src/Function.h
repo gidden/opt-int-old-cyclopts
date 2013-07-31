@@ -29,7 +29,7 @@ class Function {
   virtual ~Function() {};
 
   /// get a modifier
-  double GetModifier(VariablePtr& v);
+  double GetModifier(VariablePtr v);
 
   /// get the beginning iterator to constituents_
   std::map<VariablePtr,double>::iterator begin();
@@ -48,7 +48,7 @@ class Function {
   std::map<VariablePtr,double> constituents_;    
 
   /// add a constituent
-  void AddConstituent(VariablePtr& v, double& modifer);
+  void AddConstituent(VariablePtr v, double modifer);
 
   /// the solver interface builds functions knowing what variables exist
   friend class SolverInterface;

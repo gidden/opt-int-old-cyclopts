@@ -16,12 +16,12 @@ Function::Function() {
 }
 
 // -----------------------------------------------------------------------------
-void Function::AddConstituent(VariablePtr& v, double& modifier) {
+void Function::AddConstituent(VariablePtr v, double modifier) {
   constituents_.insert(pair<VariablePtr,double>(v,modifier));
 }
 
 // -----------------------------------------------------------------------------
-double Function::GetModifier(VariablePtr& v) {
+double Function::GetModifier(VariablePtr v) {
   return constituents_[v];
 }
 

@@ -24,7 +24,7 @@ class Solver {
   virtual ~Solver() {};
 
   /// solve method to be overloaded by derived classes
-  virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+  virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr obj, 
                      std::vector<ConstraintPtr>& constraints) = 0;
 
  protected:

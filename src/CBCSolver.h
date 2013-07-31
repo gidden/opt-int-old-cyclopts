@@ -15,7 +15,7 @@ namespace cyclopts {
 class CBCSolver : public Solver {
  public:
   /// solve an MIP
-  virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+  virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr obj, 
                      std::vector<ConstraintPtr>& constraints);
 
  private:
@@ -29,17 +29,17 @@ class CBCSolver : public Solver {
   int IntBound(Variable::Bound b);
 
   /// get coin-specific bound for a constraint
-  std::pair<double,double> ConstraintBounds(ConstraintPtr& c);
+  std::pair<double,double> ConstraintBounds(ConstraintPtr c);
 
   /// set variable/objective function values
   void SetUpVariablesAndObj(std::vector<VariablePtr>& variables, 
-                            ObjFuncPtr& obj);
+                            ObjFuncPtr obj);
 
   /// set up constraints
   void SetUpConstraints(std::vector<ConstraintPtr>& constraints);
 
   /// set the objective direction
-  double ObjDirection(ObjFuncPtr& obj);
+  double ObjDirection(ObjFuncPtr obj);
 
   /// solve the model
   void SolveModel(CoinCbcModel& model);

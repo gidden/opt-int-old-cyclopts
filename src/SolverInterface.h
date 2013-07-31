@@ -11,22 +11,22 @@ namespace cyclopts {
 class SolverInterface {
  public:
   /// constructor, sets the solver to use
-  SolverInterface(SolverPtr& solver);
+  SolverInterface(SolverPtr solver);
 
   /// add a constraint
-  void RegisterVariable(VariablePtr& v);
+  void RegisterVariable(VariablePtr v);
 
   /// set the objective function
   void RegisterObjFunction(ObjFuncPtr obj);
 
   /// add a variable to the objective function
-  void AddVarToObjFunction(VariablePtr& v, double& modifier);
+  void AddVarToObjFunction(VariablePtr v, double modifier);
 
   /// add a constraint
-  void RegisterConstraint(ConstraintPtr& c);
+  void RegisterConstraint(ConstraintPtr c);
 
   /// add a variable to a constraint
-  void AddVarToConstraint(VariablePtr& v, double& modifier, ConstraintPtr& c);
+  void AddVarToConstraint(VariablePtr v, double modifier, ConstraintPtr c);
 
   /// solve the constraint program
   void Solve();
@@ -48,7 +48,7 @@ class SolverInterface {
   double modifier_limit_;
 
   /// checks if a modifier is within the acceptable bounds for modifiers
-  void CheckModifierBounds(double& modifier);
+  void CheckModifierBounds(double modifier);
 };
 }
 

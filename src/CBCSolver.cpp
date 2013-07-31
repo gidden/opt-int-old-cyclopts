@@ -45,7 +45,7 @@ int CBCSolver::IntBound(Variable::Bound b) {
 }
 
 // -----------------------------------------------------------------------------
-std::pair<double,double> CBCSolver::ConstraintBounds(ConstraintPtr& c) {
+std::pair<double,double> CBCSolver::ConstraintBounds(ConstraintPtr c) {
   double lval, rval;
   switch(c->eq_relation()) {
   case Constraint::EQ:
@@ -67,7 +67,7 @@ std::pair<double,double> CBCSolver::ConstraintBounds(ConstraintPtr& c) {
 
 // -----------------------------------------------------------------------------
 void CBCSolver::SetUpVariablesAndObj(std::vector<VariablePtr>& variables, 
-                                     ObjFuncPtr& obj) {
+                                     ObjFuncPtr obj) {
   for (int i = 0; i < variables.size(); i++) {
     VariablePtr v = variables.at(i);
     switch(v->type()) {
@@ -99,7 +99,7 @@ void CBCSolver::SetUpConstraints(std::vector<ConstraintPtr>& constraints) {
 }
 
 // -----------------------------------------------------------------------------
-double CBCSolver::ObjDirection(ObjFuncPtr& obj) {
+double CBCSolver::ObjDirection(ObjFuncPtr obj) {
   double sense_value;
   switch(obj->dir()) {
   case ObjectiveFunction::MIN:
@@ -180,7 +180,7 @@ void CBCSolver::Print(int n_const, int n_vars) {
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+void CBCSolver::Solve(std::vector<VariablePtr>& variables, ObjFuncPtr obj, 
                       std::vector<ConstraintPtr>& constraints) {
   // use builder_ to build constraint probelm
   Solver::PopulateIndices(variables);
