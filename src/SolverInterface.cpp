@@ -1,11 +1,11 @@
 #include "SolverInterface.h"
-#include "SolverTools.h"
-#include "CycloptsLimits.h"
 
-#include <vector>
 #include <stdexcept>
+#include <vector>
 #include <sstream>
 #include <iostream>
+
+#include "CycloptsLimits.h"
 
 using namespace std;
 using namespace cyclopts;
@@ -14,7 +14,7 @@ using namespace cyclopts;
 SolverInterface::SolverInterface(SolverPtr& s) : solver_(s) {
   constraints_ = vector<ConstraintPtr>();
   variables_ = vector<VariablePtr>();
-  modifier_limit_ = modifier_limit; // this is a bandaid, I don't know why it has to happen... somethings up with cbc
+  modifier_limit_ = kModifierLimit; // this is a bandaid, I don't know why it has to happen... somethings up with cbc
 };
 
 // -----------------------------------------------------------------------------

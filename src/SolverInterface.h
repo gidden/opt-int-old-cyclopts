@@ -1,10 +1,10 @@
-#ifndef CYCLUSSOLVERINTERFACE_H
-#define CYCLUSSOLVERINTERFACE_H
+#ifndef SOLVER_INTERFACE_H_
+#define SOLVER_INTERFACE_H_
+
+#include <vector>
 
 #include "Solver.h"
 #include "SolverTools.h"
-
-#include <vector>
 
 namespace cyclopts {
   /// interface class to set up and solve a constraint program

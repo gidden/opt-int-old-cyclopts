@@ -1,15 +1,16 @@
 #include "CBCSolver.h"
 
-#include "SolverTools.h"
-
 #include <iostream>
 #include <utility>
+
 #include <boost/any.hpp>
 
 // Coin related
 #include "CoinModel.hpp"
 #include "CbcModel.hpp"
 #include "OsiClpSolverInterface.hpp"
+
+#include "CycloptsLimits.h"
 
 using namespace std;
 using namespace boost;
@@ -53,12 +54,12 @@ std::pair<double,double> CBCSolver::constraintBounds(ConstraintPtr& c) {
   case Constraint::GTEQ:
     lval = c->rhs(); rval = COIN_DBL_MAX;
   case Constraint::GT: // explicit fall through
-    lval += CONSTRAINT_EPS; 
+    lval += kConstraintEps; 
     break;
   case Constraint::LTEQ:
     lval = COIN_DBL_MAX; rval = c->rhs();
   case Constraint::LT: // explicit fall through
-    rval -= CONSTRAINT_EPS; 
+    rval -= kConstraintEps; 
     break;
   }
   return pair<double,double>(lval,rval);

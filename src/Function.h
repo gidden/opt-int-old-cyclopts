@@ -1,12 +1,13 @@
-#ifndef FUNCTION_H
-#define FUNCTION_H
-
-#include "Variable.h"
+#ifndef FUNCTION_H_
+#define FUNCTION_H_
 
 #include <map>
 #include <utility>
 #include <string>
+
 #include <boost/shared_ptr.hpp>
+
+#include "Variable.h"
 
 namespace cyclopts {
   class Function;

@@ -1,7 +1,8 @@
-#ifndef VARIABLE_H
-#define VARIABLE_H
+#ifndef VARIABLE_H_
+#define VARIABLE_H_
 
 #include <string>
+
 #include <boost/shared_ptr.hpp>
 #include <boost/any.hpp>
 

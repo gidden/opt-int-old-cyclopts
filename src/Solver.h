@@ -1,8 +1,9 @@
-#ifndef CYCLUSSOLVER_H
-#define CYCLUSSOLVER_H
+#ifndef SOLVER_H_
+#define SOLVER_H_
 
 #include <vector>
 #include <map>
+
 #include <boost/shared_ptr.hpp>
 
 namespace cyclopts {

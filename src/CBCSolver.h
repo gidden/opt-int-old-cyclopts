@@ -1,14 +1,11 @@
-#ifndef CBCSOLVER_H
-#define CBCSOLVER_H
-
-#include "SolverTools.h"
+#ifndef CBC_SOLVER_H_
+#define CBC_SOLVER_H_
 
 // coin includes
 #include "CoinModel.hpp"
 #include "CbcModel.hpp"
 
-/// an epsilon value to define strict inequalities
-#define CONSTRAINT_EPS 1e-08
+#include "SolverTools.h"
 
 /// typedef cbc model to abstract away coin's library
 typedef CbcModel CoinCbcModel;

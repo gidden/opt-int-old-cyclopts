@@ -1,9 +1,9 @@
 #include "Solver.h"
 
-#include "SolverTools.h"
-
 #include <map>
 #include <vector>
+
+#include "SolverTools.h"
 
 using namespace std;
 using namespace cyclopts;
