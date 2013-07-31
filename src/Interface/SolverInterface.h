@@ -6,7 +6,7 @@
 
 #include <vector>
 
-namespace Cyclopts{
+namespace cyclopts{
   /// interface class to set up and solve a constraint program
   class SolverInterface {
   public:

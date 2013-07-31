@@ -8,7 +8,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 
-namespace Cyclopts {
+namespace cyclopts {
   class Function;
   class Constraint;
   typedef boost::shared_ptr<Constraint> ConstraintPtr;
@@ -18,7 +18,7 @@ namespace Cyclopts {
 
 #include "SolverInterface.h"
 
-namespace Cyclopts {
+namespace cyclopts {
   /// function base class
   class Function {
   public:

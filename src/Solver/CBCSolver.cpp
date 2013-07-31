@@ -13,7 +13,7 @@
 
 using namespace std;
 using namespace boost;
-using namespace Cyclopts;
+using namespace cyclopts;
 
 // -----------------------------------------------------------------------------------
 double CBCSolver::doubleBound(Variable::bound b) {

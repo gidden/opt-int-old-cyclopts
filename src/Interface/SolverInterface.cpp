@@ -8,7 +8,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace Cyclopts;
+using namespace cyclopts;
 
 // -----------------------------------------------------------------------------------
 SolverInterface::SolverInterface(SolverPtr& s) : solver_(s) {

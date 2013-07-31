@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-namespace Cyclopts
+namespace cyclopts
 {
   namespace Limits
   {

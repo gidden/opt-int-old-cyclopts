@@ -6,7 +6,7 @@
 #include <vector>
 
 using namespace std;
-using namespace Cyclopts;
+using namespace cyclopts;
 
 // -----------------------------------------------------------------------------------
 Solver::Solver() {
