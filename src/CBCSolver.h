@@ -11,53 +11,54 @@
 typedef CbcModel CoinCbcModel;
 
 namespace cyclopts {
-  /// the coin branch-and-cut solver
-  class CBCSolver : public Solver {
-   public:
-    /// solve an MIP
-    virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
-                       std::vector<ConstraintPtr>& constraints);
-   private:
-    /// the model builder
-    CoinModel builder_;
+/// the coin branch-and-cut solver
+class CBCSolver : public Solver {
+ public:
+  /// solve an MIP
+  virtual void Solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+                     std::vector<ConstraintPtr>& constraints);
 
-    /// return +/- COIN_DBL_MAX 
-    double DoubleBound(Variable::Bound b);
+ private:
+  /// the model builder
+  CoinModel builder_;
 
-    /// return +/- COIN_INT_MAX 
-    int IntBound(Variable::Bound b);
+  /// return +/- COIN_DBL_MAX 
+  double DoubleBound(Variable::Bound b);
 
-    /// get coin-specific bound for a constraint
-    std::pair<double,double> ConstraintBounds(ConstraintPtr& c);
+  /// return +/- COIN_INT_MAX 
+  int IntBound(Variable::Bound b);
 
-    /// set variable/objective function values
-    void SetUpVariablesAndObj(std::vector<VariablePtr>& variables, 
-                              ObjFuncPtr& obj);
+  /// get coin-specific bound for a constraint
+  std::pair<double,double> ConstraintBounds(ConstraintPtr& c);
 
-    /// set up constraints
-    void SetUpConstraints(std::vector<ConstraintPtr>& constraints);
+  /// set variable/objective function values
+  void SetUpVariablesAndObj(std::vector<VariablePtr>& variables, 
+                            ObjFuncPtr& obj);
 
-    /// set the objective direction
-    double ObjDirection(ObjFuncPtr& obj);
+  /// set up constraints
+  void SetUpConstraints(std::vector<ConstraintPtr>& constraints);
 
-    /// solve the model
-    void SolveModel(CoinCbcModel& model);
+  /// set the objective direction
+  double ObjDirection(ObjFuncPtr& obj);
 
-    /// populate the solution in the variable vector
-    void PopulateSolution(CoinCbcModel& model,
-                          std::vector<VariablePtr>& variables);
+  /// solve the model
+  void SolveModel(CoinCbcModel& model);
 
-    /// print variables info
-    void PrintVariables(int n_const);
+  /// populate the solution in the variable vector
+  void PopulateSolution(CoinCbcModel& model,
+                        std::vector<VariablePtr>& variables);
 
-    /// print objective function info
-    void PrintObjFunction(int n_vars);
+  /// print variables info
+  void PrintVariables(int n_const);
 
-    /// print constraint info
-    void PrintConstraints(int n_const, int n_vars);
+  /// print objective function info
+  void PrintObjFunction(int n_vars);
 
-    /// prints each other printing function
-    void Print(int n_const, int n_vars);
+  /// print constraint info
+  void PrintConstraints(int n_const, int n_vars);
+
+  /// prints each other printing function
+  void Print(int n_const, int n_vars);
   };
 }
 

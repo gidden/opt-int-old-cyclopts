@@ -10,101 +10,101 @@
 #include "Variable.h"
 
 namespace cyclopts {
-  class Constraint;
-  typedef boost::shared_ptr<Constraint> ConstraintPtr;
-  class ObjectiveFunction;
-  typedef boost::shared_ptr<ObjectiveFunction> ObjFuncPtr;
+class Constraint;
+typedef boost::shared_ptr<Constraint> ConstraintPtr;
+class ObjectiveFunction;
+typedef boost::shared_ptr<ObjectiveFunction> ObjFuncPtr;
 }
 
 #include "SolverInterface.h"
 
 namespace cyclopts {
-  /// function base class
-  class Function {
-   public:
-    /// constructor
-    Function();
+/// function base class
+class Function {
+ public:
+  /// constructor
+  Function();
 
-    /// virtual destructor for base class
-    virtual ~Function() {};
+  /// virtual destructor for base class
+  virtual ~Function() {};
 
-    /// get a modifier
-    double GetModifier(VariablePtr& v);
+  /// get a modifier
+  double GetModifier(VariablePtr& v);
 
-    /// get the beginning iterator to constituents_
-    std::map<VariablePtr,double>::iterator begin();
+  /// get the beginning iterator to constituents_
+  std::map<VariablePtr,double>::iterator begin();
 
-    /// get the ending iterator to constituents_
-    std::map<VariablePtr,double>::iterator end();
+  /// get the ending iterator to constituents_
+  std::map<VariablePtr,double>::iterator end();
 
-    /// get number of constituents
-    int NumConstituents();
+  /// get number of constituents
+  int NumConstituents();
 
-    /// print the function
-    virtual std::string Print();
+  /// print the function
+  virtual std::string Print();
 
-   private:
-    /// a container of all variables and their corresponding constant
-    std::map<VariablePtr,double> constituents_;    
+ private:
+  /// a container of all variables and their corresponding constant
+  std::map<VariablePtr,double> constituents_;    
 
-    /// add a constituent
-    void AddConstituent(VariablePtr& v, double& modifer);
+  /// add a constituent
+  void AddConstituent(VariablePtr& v, double& modifer);
 
-    /// the solver interface builds functions knowing what variables exist
-    friend class SolverInterface;
-  };
+  /// the solver interface builds functions knowing what variables exist
+  friend class SolverInterface;
+};
 
-  /// derived class for constraints
-  class Constraint : public Function {
-   public:
-    /// the equality relation
-    enum EqualityRelation {EQ,GT,GTEQ,LT,LTEQ};
-
-    /// constructor
-    Constraint(EqualityRelation eq_r, double rhs);
-
-    /// get the equality relation
-    EqualityRelation eq_relation();
-
-    /// get the rhs
-    double rhs();
-
-    /// print the constraint
-    virtual std::string Print();
-
-   private:
-    /// the type of equality relation
-    EqualityRelation eq_relation_;
-
-    /// the rhs value
-    double rhs_;
-
-    /// turn eq_relation_ into a string
-    std::string EqRToStr();
-  };
+/// derived class for constraints
+class Constraint : public Function {
+ public:
+  /// the equality relation
+  enum EqualityRelation {EQ,GT,GTEQ,LT,LTEQ};
   
-  /// derived class for objective functions
-  class ObjectiveFunction : public Function {
-  public: 
-    /// the possible direction
-    enum Direction {MIN,MAX};
+  /// constructor
+  Constraint(EqualityRelation eq_r, double rhs);
 
-    /// constructor
-    explicit ObjectiveFunction(Direction dir);
+  /// get the equality relation
+  EqualityRelation eq_relation();
 
-    /// get the Direction
-    Direction dir();
+  /// get the rhs
+  double rhs();
 
-    /// print the objective function
-    virtual std::string Print();
+  /// print the constraint
+  virtual std::string Print();
 
-  private:
-    /// the Direction
-    Direction dir_;
+ private:
+  /// the type of equality relation
+  EqualityRelation eq_relation_;
 
-    /// turn dir_ into a string
-    std::string DirToStr();
-  };
+  /// the rhs value
+  double rhs_;
+
+  /// turn eq_relation_ into a string
+  std::string EqRToStr();
+};
+  
+/// derived class for objective functions
+class ObjectiveFunction : public Function {
+ public: 
+  /// the possible direction
+  enum Direction {MIN,MAX};
+
+  /// constructor
+  explicit ObjectiveFunction(Direction dir);
+
+  /// get the Direction
+  Direction dir();
+
+  /// print the objective function
+  virtual std::string Print();
+
+ private:
+  /// the Direction
+  Direction dir_;
+
+  /// turn dir_ into a string
+  std::string DirToStr();
+};
 }
 
 #endif
