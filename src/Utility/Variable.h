@@ -5,7 +5,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/any.hpp>
 
-namespace Cyclopts {
+namespace cyclopts {
   class Variable;
   /// a smart pointer to the base class
   typedef boost::shared_ptr<Variable> VariablePtr;

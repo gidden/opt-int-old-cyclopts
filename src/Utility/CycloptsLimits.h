@@ -3,12 +3,9 @@
 
 #include <cmath>
 
-namespace Cyclopts
+namespace cyclopts
 {
-  namespace Limits
-  {
-    static const double modifier_limit = pow(10,10);
-  }
+  static const double modifier_limit = pow(10,10);
 }
 
 #endif

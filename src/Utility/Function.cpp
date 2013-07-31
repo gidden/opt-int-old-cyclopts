@@ -8,7 +8,7 @@
 #include <sstream>
 
 using namespace std;
-using namespace Cyclopts;
+using namespace cyclopts;
 
 // +++ Function methods ++
 // -----------------------------------------------------------------------------------
