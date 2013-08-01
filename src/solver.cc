@@ -1,9 +1,9 @@
-#include "Solver.h"
-
-#include "SolverTools.h"
+#include "solver.h"
 
 #include <map>
 #include <vector>
+
+#include "solver_tools.h"
 
 using namespace std;
 using namespace cyclopts;
@@ -14,7 +14,7 @@ Solver::Solver() {
 }
 
 // -----------------------------------------------------------------------------
-void Solver::populateIndices(std::vector<VariablePtr>& variables) {
+void Solver::PopulateIndices(std::vector<VariablePtr>& variables) {
   for (int i = 0; i < variables.size(); i++) {
     index_[variables.at(i)] = i;
   }

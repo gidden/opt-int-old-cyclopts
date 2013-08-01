@@ -1,9 +1,8 @@
-#include "CBCSolver.h"
-
-#include "SolverTools.h"
+#include "cbc_solver.h"
 
 #include <iostream>
 #include <utility>
+
 #include <boost/any.hpp>
 
 // Coin related
@@ -11,12 +10,14 @@
 #include "CbcModel.hpp"
 #include "OsiClpSolverInterface.hpp"
 
+#include "cyclopts_limits.h"
+
 using namespace std;
 using namespace boost;
 using namespace cyclopts;
 
 // -----------------------------------------------------------------------------
-double CBCSolver::doubleBound(Variable::bound b) {
+double CBCSolver::DoubleBound(Variable::Bound b) {
   double val;
   switch(b) {
   case Variable::NEG_INF:
@@ -30,7 +31,7 @@ double CBCSolver::doubleBound(Variable::bound b) {
 }
 
 // -----------------------------------------------------------------------------
-int CBCSolver::intBound(Variable::bound b) {
+int CBCSolver::IntBound(Variable::Bound b) {
   int val;
   switch(b) {
   case Variable::NEG_INF:
@@ -44,51 +45,51 @@ int CBCSolver::intBound(Variable::bound b) {
 }
 
 // -----------------------------------------------------------------------------
-std::pair<double,double> CBCSolver::constraintBounds(ConstraintPtr& c) {
+std::pair<double,double> CBCSolver::ConstraintBounds(ConstraintPtr c) {
   double lval, rval;
-  switch(c->equalityRelation()) {
+  switch(c->eq_relation()) {
   case Constraint::EQ:
     lval = c->rhs(); rval = c->rhs();
     break;
   case Constraint::GTEQ:
     lval = c->rhs(); rval = COIN_DBL_MAX;
   case Constraint::GT: // explicit fall through
-    lval += CONSTRAINT_EPS; 
+    lval += kConstraintEps; 
     break;
   case Constraint::LTEQ:
     lval = COIN_DBL_MAX; rval = c->rhs();
   case Constraint::LT: // explicit fall through
-    rval -= CONSTRAINT_EPS; 
+    rval -= kConstraintEps; 
     break;
   }
   return pair<double,double>(lval,rval);
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::setUpVariablesAndObj(std::vector<VariablePtr>& variables, 
-                                     ObjFuncPtr& obj) {
+void CBCSolver::SetUpVariablesAndObj(std::vector<VariablePtr>& variables, 
+                                     ObjFuncPtr obj) {
   for (int i = 0; i < variables.size(); i++) {
     VariablePtr v = variables.at(i);
     switch(v->type()) {
     case Variable::INT:
-      builder_.setColumnBounds(i,intBound(v->lbound()),
-                               intBound(v->ubound()));
+      builder_.setColumnBounds(i,IntBound(v->lbound()),
+                               IntBound(v->ubound()));
       builder_.setInteger(i);
       break;
     case Variable::LINEAR:
-      builder_.setColumnBounds(i,doubleBound(v->lbound()),
-                               doubleBound(v->ubound()));
+      builder_.setColumnBounds(i,DoubleBound(v->lbound()),
+                               DoubleBound(v->ubound()));
       break;
     }
-    builder_.setObjective(i,obj->getModifier(v));
+    builder_.setObjective(i,obj->GetModifier(v));
   }
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::setUpConstraints(std::vector<ConstraintPtr>& constraints) {
+void CBCSolver::SetUpConstraints(std::vector<ConstraintPtr>& constraints) {
   for (int i = 0; i < constraints.size(); i++) {
     ConstraintPtr c = constraints.at(i);
-    pair<double,double> bounds = constraintBounds(c);
+    pair<double,double> bounds = ConstraintBounds(c);
     builder_.setRowBounds(i,bounds.first,bounds.second);
     std::map<VariablePtr,double>::iterator it;
     for (it = c->begin(); it != c->end(); it++) {
@@ -98,7 +99,7 @@ void CBCSolver::setUpConstraints(std::vector<ConstraintPtr>& constraints) {
 }
 
 // -----------------------------------------------------------------------------
-double CBCSolver::objDirection(ObjFuncPtr& obj) {
+double CBCSolver::ObjDirection(ObjFuncPtr obj) {
   double sense_value;
   switch(obj->dir()) {
   case ObjectiveFunction::MIN:
@@ -112,14 +113,14 @@ double CBCSolver::objDirection(ObjFuncPtr& obj) {
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::solveModel(CbcModel& model) {
+void CBCSolver::SolveModel(CbcModel& model) {
   model.messageHandler()->setLogLevel(0); // turn off all output
   model.solver()->messageHandler()->setLogLevel(0); // turn off all output
   model.branchAndBound();
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::populateSolution(CbcModel& model, 
+void CBCSolver::PopulateSolution(CbcModel& model, 
                                  std::vector<VariablePtr>& variables) {
   int ncol = model.solver()->getNumCols();
   const double* solution = model.solver()->getColSolution();
@@ -131,12 +132,12 @@ void CBCSolver::populateSolution(CbcModel& model,
       value = (int) solution[i];
       break;
     }
-    variables.at(i)->setValue(value);
+    variables.at(i)->set_value(value);
   }
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::printVariables(int num) {
+void CBCSolver::PrintVariables(int num) {
   cout << "Variables:" << endl;
   for (int i = 0; i < num; i++) {
     cout << "  lbound: " << builder_.getColLower(i) << " ubound: " << 
@@ -147,7 +148,7 @@ void CBCSolver::printVariables(int num) {
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::printObjFunction(int num) {
+void CBCSolver::PrintObjFunction(int num) {
   cout << "Objective Function:" << endl;
   cout << "  direction: " << builder_.optimizationDirection() << endl;
   cout << "    values: ";
@@ -158,7 +159,7 @@ void CBCSolver::printObjFunction(int num) {
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::printConstraints(int n_const, int n_vars) {
+void CBCSolver::PrintConstraints(int n_const, int n_vars) {
   cout << "Constraints:" << endl;
   for (int i = 0; i < n_const; i++) {
     cout << "  lbound: " << builder_.getRowLower(i) << " ubound: " << 
@@ -172,27 +173,27 @@ void CBCSolver::printConstraints(int n_const, int n_vars) {
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::print(int n_const, int n_vars) {
-  printVariables(n_vars);
-  printObjFunction(n_vars);
-  printConstraints(n_const,n_vars);
+void CBCSolver::Print(int n_const, int n_vars) {
+  PrintVariables(n_vars);
+  PrintObjFunction(n_vars);
+  PrintConstraints(n_const,n_vars);
 }
 
 // -----------------------------------------------------------------------------
-void CBCSolver::solve(std::vector<VariablePtr>& variables, ObjFuncPtr& obj, 
+void CBCSolver::Solve(std::vector<VariablePtr>& variables, ObjFuncPtr obj, 
                       std::vector<ConstraintPtr>& constraints) {
   // use builder_ to build constraint probelm
-  Solver::populateIndices(variables);
-  setUpConstraints(constraints);
-  setUpVariablesAndObj(variables,obj);
-  builder_.setOptimizationDirection(objDirection(obj));
-  // print(constraints.size(),variables.size());
+  Solver::PopulateIndices(variables);
+  SetUpConstraints(constraints);
+  SetUpVariablesAndObj(variables,obj);
+  builder_.setOptimizationDirection(ObjDirection(obj));
+  // Print(constraints.size(),variables.size());
 
   // solve constraint problem
   OsiClpSolverInterface solver1;
   OsiSolverInterface* solver = &solver1;
   solver->loadFromCoinModel(builder_);
   CbcModel model(*solver);
-  solveModel(model);
-  populateSolution(model,variables);
+  SolveModel(model);
+  PopulateSolution(model,variables);
 }
