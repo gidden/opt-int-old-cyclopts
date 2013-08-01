@@ -1,5 +1,5 @@
-#ifndef SOLVER_H_
-#define SOLVER_H_
+#ifndef CYCLOPTS_SOLVER_H_
+#define CYCLOPTS_SOLVER_H_
 
 #include <vector>
 #include <map>

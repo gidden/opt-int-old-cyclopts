@@ -1,5 +1,5 @@
-#ifndef SOLVER_INTERFACE_H_
-#define SOLVER_INTERFACE_H_
+#ifndef CYCLOPTS_SOLVER_INTERFACE_H_
+#define CYCLOPTS_SOLVER_INTERFACE_H_
 
 #include <vector>
 

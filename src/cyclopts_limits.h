@@ -1,5 +1,5 @@
-#ifndef CYCLOPTS_LIMITS_H_
-#define CYCLOPTS_LIMITS_H_
+#ifndef CYCLOPTS_CYCLOPTS_LIMITS_H_
+#define CYCLOPTS_CYCLOPTS_LIMITS_H_
 
 #include <cmath>
 

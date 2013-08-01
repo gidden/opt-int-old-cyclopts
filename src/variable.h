@@ -1,5 +1,5 @@
-#ifndef VARIABLE_H_
-#define VARIABLE_H_
+#ifndef CYCLOPTS_VARIABLE_H_
+#define CYCLOPTS_VARIABLE_H_
 
 #include <string>
 

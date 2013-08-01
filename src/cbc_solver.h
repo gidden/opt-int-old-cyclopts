@@ -1,5 +1,5 @@
-#ifndef CBC_SOLVER_H_
-#define CBC_SOLVER_H_
+#ifndef CYCLOPTS_CBC_SOLVER_H_
+#define CYCLOPTS_CBC_SOLVER_H_
 
 // coin includes
 #include "CoinModel.hpp"
