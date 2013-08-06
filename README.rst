@@ -4,6 +4,14 @@ Cyclopts
 
 The Cyclus Optimization Library
 
+Deprecation
+===========
+
+Note that the Cyclopts library has been deprecated after v0.2. If you are using
+Cyclus v0.1, then please use the separated Cyclopts library v0.2. If you are
+using Cyclus post v0.1, then Cyclopts has been incorporated into the Cyclus
+library.
+
 Build & Install
 ===============
 
